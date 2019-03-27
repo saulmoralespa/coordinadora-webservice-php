@@ -22,9 +22,9 @@ $password = '' // your password of Coordinadora
 $nit = '' //your nit
 
 //guides
-$id_client = ''; your id client
-$user_guide = ''; your user
-$password_guide = ''; your password
+$id_client = ''; //your id client
+$user_guide = ''; //your user
+$password_guide = ''; //your password
 
 
 try{
