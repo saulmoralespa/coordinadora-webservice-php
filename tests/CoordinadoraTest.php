@@ -15,13 +15,13 @@ class CoordinadoraTest extends TestCase
 
     public function setUp()
     {
-        $apikey = '048e77c8-8171-11e8-adc0-fa7ae01bbebc';
-        $password_dispatche = '502IPLF6p9QMDe';
-        $nit = '802001232';
+        $apikey = '';
+        $password_dispatche = '';
+        $nit = '';
 
-        $id_client = '28566';
-        $user_guide = 'ecocueros.ws';
-        $password_guide = 'Ec8905!?n';
+        $id_client = '';
+        $user_guide = '';
+        $password_guide = '';
 
         $this->webservice = new WebService($apikey, $password_dispatche, $nit, $id_client, $user_guide, $password_guide);
         $this->webservice->sandbox_mode(true);

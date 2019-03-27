@@ -1,4 +1,4 @@
-Servientrega Webservice PHP
+Coordinadora Webservice PHP
 ============================================================
 
 ## Installation
@@ -7,7 +7,7 @@ Use composer package manager
 
 
 ```bash
-composer require saulmoralespa/servientrega-webservice-php
+composer require saulmoralespa/coordinadora-webservice-php
 ```
 
 ```php
@@ -15,7 +15,7 @@ composer require saulmoralespa/servientrega-webservice-php
 include_once __DIR__ . DIRECTORY_SEPARATOR . 'vendor' . DIRECTORY_SEPARATOR . 'autoload.php';
 
 // import webservice class
-use Servientrega\WebService;
+use Coordinadora\WebService;
 
 $apikey = ''; // your apikey of Coordinadora
 $password = '' // your password of Coordinadora
@@ -243,28 +243,40 @@ catch (\Exception $exception){
 
 ### Guias_generarGuia
 
-
 ```php
+$cart_prods = array();
 
-$cart_prods = array(
-    'ubl' => '0',
-    'alto' => '70',
-    'ancho' => '100',
-    'largo' => '200',
-    'peso' => '1',
-    'unidades' => '1',
-    'referencia' => 'referencepacket',
-    'nombre_empaque' => 'name packet'
-);
+        $cart_prods[] = (object)array(
+            'ubl' => '0',
+            'alto' => '70',
+            'ancho' => '100',
+            'largo' => '200',
+            'peso' => '1',
+            'unidades' => '1',
+            'referencia' => 'referencepacket',
+            'nombre_empaque' => 'name packet'
+        );
 
 
-$params = array(
-            'codigo_remision' => "",
-            'fecha' => date('Y-m-d'),
-            'id_remitente' => '0',
+        $cart_prods[] = (object)array(
+            'ubl' => '0',
+            'alto' => '70',
+            'ancho' => '100',
+            'largo' => '200',
+            'peso' => '1',
+            'unidades' => '1',
+            'referencia' => 'referencepacket1',
+            'nombre_empaque' => 'name packet'
+        );
+
+
+        $params = array(
+            'codigo_remision' => '',
+            'fecha' => '',
+            'id_remitente' => "0",
             'nit_remitente' => '',
-            'nombre_remitente' => 'My shop',
-            'direccion_remitente' => 'calle 45 2-23',
+            'nombre_remitente' => 'shop Woo',
+            'direccion_remitente' => 'calle 43 3-23',
             'telefono_remitente' => '3170044722',
             'ciudad_remitente' => '05001000',
             'nit_destinatario' => '0',
@@ -274,38 +286,34 @@ $params = array(
             'ciudad_destinatario' => '05001000',
             'telefono_destinatario' => '3189023450',
             'valor_declarado' => '90000',
-            'codigo_cuenta' => 2,
-            'codigo_producto' => 0,
-            'nivel_servicio' => 1,
+            'codigo_cuenta' => "2",
+            'codigo_producto' => "0",
+            'nivel_servicio' => "1",
             'linea' => '',
             'contenido' => 'nada',
-            'referencia' => '',
+            'referencia' => 'refeeradd',
             'observaciones' => '',
-            'estado' => 'IMPRESO', //recomendado para la generación del pdf
-            'detalle' => array(
-                'item' => $cart_prods
-            ),
+            'estado' => 'IMPRESO',
+            'detalle' => $cart_prods,
             'cuenta_contable' => '',
             'centro_costos' => '',
-            'recaudos' => array(),
-            'margen_izquierdo' => 1.5,
-            'margen_superior' => 1.5,
-            'id_rotulo' => 0,
+            'recaudos' => '',
+            'margen_izquierdo' => '',
+            'margen_superior' => '',
+            'id_rotulo' => '0',
             'usuario_vmi' => '',
             'formato_impresion' => '',
             'atributo1_nombre' => '',
             'atributo1_valor' => '',
-            'notificaciones' => array(
-                'tipo_medio' => '1',
-                'destino_notificacion' => 'example@gmail.com'
+            'notificaciones' => (object)array(
             ),
-            'atributos_retorno' => array(
+            'atributos_retorno' => (object)array(
                 'nit' => '',
                 'div' => '',
                 'nombre' => '',
                 'direccion' => '',
-                'codigo_ciudad' => '05001000',
-                'telefono' => '3170044722'
+                'codigo_ciudad' => '',
+                'telefono' => ''
             ),
             'nro_doc_radicados' => '',
             'nro_sobre' => '',
