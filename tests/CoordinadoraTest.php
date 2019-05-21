@@ -24,7 +24,7 @@ class CoordinadoraTest extends TestCase
         $password_guide = '';
 
         $this->webservice = new WebService($apikey, $password_dispatche, $nit, $id_client, $user_guide, $password_guide);
-        $this->webservice->sandbox_mode(true);
+        $this->webservice->sandbox_mode(false);
     }
 
 
@@ -53,7 +53,7 @@ class CoordinadoraTest extends TestCase
         );
 
         $params = array(
-            'div'            => '',
+            'div'            => '01', //Div asociado a un acuerdo Coordinadora Mercantil, si no se tiene acuerdo el campo puede ir vacio.
             'cuenta'         => '2',
             'producto'       => '0',
             'origen'         => "13001000",
@@ -66,6 +66,8 @@ class CoordinadoraTest extends TestCase
         );
 
         $data = $this->webservice->Cotizador_cotizar($params);
+
+        var_dump($data);
 
         $this->assertObjectHasAttribute('flete_total', $data);
     }

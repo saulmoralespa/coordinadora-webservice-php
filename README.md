@@ -65,7 +65,7 @@ $cart_prods = array(
     );
 
     $params = array(
-        'div' => "01", //Asociado a un acuerdo Coordinadora Mercantil
+        'div' => "01", //Div asociado a un acuerdo Coordinadora Mercantil, si no se tiene acuerdo el campo puede ir vacio
         'cuenta' => "2",
         'producto' => "0",
         'origen' => '05088000',

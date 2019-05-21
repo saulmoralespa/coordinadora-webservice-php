@@ -135,7 +135,7 @@ class WebService
     public function Cotizador_cotizar($params)
     {
         $body =  array(
-            'p' => array_merge($params, array('nit'  => ''), $this->_access_connect_dispatches()),
+            'p' => array_merge($params, array('nit'  => $this->nit), $this->_access_connect_dispatches()),
         );
 
         return $this->call_soap(__FUNCTION__, $body);
