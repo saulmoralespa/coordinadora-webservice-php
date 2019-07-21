@@ -43,25 +43,47 @@ class CoordinadoraTest extends TestCase
     public function testCotizar()
     {
 
-        $cart_prods = array(
+        $cart_prods = [];
+
+        /*$cart_prods[] = array(
             'ubl'      => '0',
-            'alto'     => '70',
-            'ancho'    => '100',
-            'largo'    => '50',
+            'alto'     => '1',
+            'ancho'    => '2',
+            'largo'    => '28',
             'peso'     => '1',
-            'unidades' => '1',
+            'unidades' => '1', //900 gramos
+        );*/
+
+        $cart_prods[] = array(
+            'ubl'      => '0',
+            'alto'     => '2',
+            'ancho'    => '4.5',
+            'largo'    => '56',
+            'peso'     => '1',
+            'unidades' => '1', //900 gramos
         );
+
+
+        /**
+         *  tengo dos productos  que cada uno pesa menos de 1 kilo
+         *
+         * pero como solo me permite pasar  kilos le coloco mínimo 1 kilo
+         *
+         * puedo agrupar estos productos y pasarlos como un solo para que, sumando su dimensiones y peso ?
+         *
+         * ¨**
+         */
 
         $params = array(
             'div'            => '01', //Div asociado a un acuerdo Coordinadora Mercantil, si no se tiene acuerdo el campo puede ir vacio.
             'cuenta'         => '2',
             'producto'       => '0',
-            'origen'         => "13001000",
-            'destino'        => '25175000',
-            'valoracion'     => '50000',
-            'nivel_servicio' => array(0),
+            'origen'         => "11001000",
+            'destino'        => '08001000',
+            'valoracion'     => '5000',
+            'nivel_servicio' => '0',
             'detalle'        => array(
-                'item' => $cart_prods,
+                'item' => $cart_prods
             )
         );
 
@@ -80,9 +102,9 @@ class CoordinadoraTest extends TestCase
 
         $cart_prods[] = (object)array(
             'ubl' => '0',
-            'alto' => '70',
-            'ancho' => '100',
-            'largo' => '200',
+            'alto' => '2.5',
+            'ancho' => '1.5',
+            'largo' => '4.5',
             'peso' => '1',
             'unidades' => '1',
             'referencia' => 'referencepacket',

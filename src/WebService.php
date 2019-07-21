@@ -238,7 +238,6 @@ class WebService
      */
     private  static function call_soap($name_function, $params = array('p' => array()))
     {
-
         if (self::isGuide($name_function) === false){
             $client = New \SoapClient( null, array("location"  => self::url_soap($name_function),
                 "uri"         => self::url_soap($name_function),
@@ -249,7 +248,19 @@ class WebService
                 "connection_timeout"=> 30,
                 "encoding"=> "utf-8"));
         }else{
-            $client = New \SoapClient(self::url_soap($name_function));
+            $client = New \SoapClient(self::url_soap($name_function), array(
+                "trace"       => true,
+                "soap_version"   => SOAP_1_2,
+                "connection_timeout"=> 30,
+                "encoding"=> "utf-8",
+                'stream_context' => stream_context_create(array(
+                    'ssl' => array(
+                        'verify_peer' => false,
+                        'verify_peer_name' => false,
+                        'allow_self_signed' => true
+                    )
+                )),
+                'cache_wsdl' => WSDL_CACHE_NONE));
         }
 
         try{
@@ -262,6 +273,5 @@ class WebService
         }catch (\Exception $exception){
             throw new  \Exception($exception->getMessage());
         }
-
     }
 }
