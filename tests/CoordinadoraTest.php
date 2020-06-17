@@ -15,6 +15,9 @@ class CoordinadoraTest extends TestCase
 
     public function setUp()
     {
+        $dotenv = Dotenv\Dotenv::createMutable(__DIR__ . '/../');
+        $dotenv->load();
+
         $apikey = '';
         $password_dispatche = '';
         $nit = '';
@@ -42,7 +45,6 @@ class CoordinadoraTest extends TestCase
 
     public function testCotizar()
     {
-
         $cart_prods = [];
 
         /*$cart_prods[] = array(
@@ -88,8 +90,6 @@ class CoordinadoraTest extends TestCase
         );
 
         $data = $this->webservice->Cotizador_cotizar($params);
-
-        var_dump($data);
 
         $this->assertObjectHasAttribute('flete_total', $data);
     }
@@ -140,7 +140,7 @@ class CoordinadoraTest extends TestCase
             'ciudad_destinatario' => '05001000',
             'telefono_destinatario' => '3189023450',
             'valor_declarado' => '90000',
-            'codigo_cuenta' => "2",
+            'codigo_cuenta' => "1",
             'codigo_producto' => "0",
             'nivel_servicio' => "1",
             'linea' => '',
@@ -174,19 +174,20 @@ class CoordinadoraTest extends TestCase
         );
 
         $data = $this->webservice->Guias_generarGuia($params);
+        var_dump($data);
         $this->assertObjectHasAttribute('codigo_remision', $data);
 
     }
 
     public function testEditGuide()
     {
-        
+
     }
 
     public function testcancelGuide()
     {
         $params = array(
-          'codigo_remision' => '85820005432'
+            'codigo_remision' => '85820005432'
         );
 
         $data = $this->webservice->Guias_anularGuia($params);
@@ -212,13 +213,26 @@ class CoordinadoraTest extends TestCase
     public function testTrackingGuideSimple()
     {
         $params = array(
-           'codigos_remision' => array(
-               '85820005433'
-           )
+            'codigos_remision' => array(
+                '85820005433'
+            )
         );
 
         $data = $this->webservice->Guias_rastreoSimple($params);
         $this->assertArrayHasKey(0,$data);
 
+    }
+
+    public function testPrintRotulos()
+    {
+        $params = array(
+            'id_rotulo' => '55',
+            'codigos_remisiones' => array(
+                '90272500056'
+            )
+        );
+
+        $data = $this->webservice->Guias_imprimirRotulos($params);
+        $this->assertObjectHasAttribute('error', $data, false);
     }
 }

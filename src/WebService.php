@@ -176,7 +176,6 @@ class WebService
      */
     public function Guias_generarGuia($params)
     {
-
         $body = (object)array_merge($params, $this->_access_connect_guides());
 
         return $this->call_soap(__FUNCTION__, $body);
@@ -224,6 +223,13 @@ class WebService
      * @throws \Exception
      */
     public function Guias_rastreoSimple($params)
+    {
+        $body = (object)array_merge($params, $this->_access_connect_guides());
+
+        return $this->call_soap(__FUNCTION__, $body);
+    }
+
+    public function Guias_imprimirRotulos($params)
     {
         $body = (object)array_merge($params, $this->_access_connect_guides());
 
